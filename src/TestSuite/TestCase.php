@@ -81,6 +81,25 @@ abstract class TestCase extends BaseTestCase
     protected $_configure = [];
 
     /**
+     * @param string $name
+     * @param array $data
+     * @param string $dataName
+     */
+    public function __construct($name = null, array $data = [], $dataName = '')
+    {
+        $this->initialize();
+
+        parent::__construct($name, $data, $dataName);
+    }
+
+    /**
+     * @return void
+     */
+    public function initialize(): void
+    {
+    }
+
+    /**
      * Overrides SimpleTestCase::skipIf to provide a boolean return value
      *
      * @param bool $shouldSkip Whether or not the test should be skipped.
@@ -206,7 +225,7 @@ abstract class TestCase extends BaseTestCase
      * `Cake\TestSuite\IntegrationTestCaseTrait` to better simulate all routes
      * and plugins being loaded.
      *
-     * @param array|null $appArgs Constuctor parameters for the application class.
+     * @param array|null $appArgs Constructor parameters for the application class.
      * @return void
      * @since 4.0.1
      */
@@ -896,6 +915,18 @@ abstract class TestCase extends BaseTestCase
         Configure::write('App.namespace', $appNamespace);
 
         return $previous;
+    }
+
+    /**
+     * @param string $fixture
+     *
+     * @return $this
+     */
+    public function addFixture(string $fixture)
+    {
+        $this->fixtures[] = $fixture;
+
+        return $this;
     }
 
     /**
