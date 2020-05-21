@@ -81,9 +81,9 @@ abstract class TestCase extends BaseTestCase
     protected $_configure = [];
 
     /**
-     * @param string $name
-     * @param array $data
-     * @param string $dataName
+     * @param string $name Name
+     * @param array $data Data
+     * @param string $dataName Data name
      */
     public function __construct($name = null, array $data = [], $dataName = '')
     {
@@ -918,8 +918,14 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * @param string $fixture
+     * Adds a fixture to this test case.
      *
+     * Examples:
+     * - core.Tags
+     * - app.MyRecords
+     * - plugin.MyPluginName.MyModelName
+     *
+     * @param string $fixture Fixture
      * @return $this
      */
     public function addFixture(string $fixture)
